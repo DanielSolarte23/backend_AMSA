@@ -41,7 +41,11 @@ Antes de comenzar, asegúrate de tener instalado:
 4. realiza las migraciones
    npx sequelize-cli db:create
 
-📂 proyecto-backend
+## 📦 Ejecutar el proyecto
+npm run dev
+
+
+📂 proyecto-villa-del-sol
 │
 ├── 📂 config # Configuración de la BD y dotenv
 ├── 📂 controllers # Lógica de los controladores
@@ -54,14 +58,13 @@ Antes de comenzar, asegúrate de tener instalado:
 ├── pruebas.txt # para probar los endpoints
 ├── README.md # Documentación del proyecto
 
-## 📦 Ejecutar el proyecto
-
-npm run dev
 
 📌 Endpoints Principales
+
 🔐 Autenticación
 POST /api/inicio → Iniciar sesión
 POST /api/registro → Registro de usuarios
+POST /api/cerrarSesion → cerrar sesión
 
 👤 Usuarios
 GET /api/usuarios → Obtener todos los usuarios
@@ -73,13 +76,11 @@ GET /api/apartamentos/:id → Obtener un apartamento por ID
 PUT /api/apartamentos/:id → Actualizar un apartamento
 DELETE /api/apartamentos/:id → Eliminar un apartamento
 
-
 🧔 Visitantes
 GET /api/visitantes → Obtener todos los visitantes
 GET /api/visitantes/:id → Obtener un visitante por ID
 PUT /api/visitantes/:id → Actualizar un visitante
 DELETE /api/visitantes/:id → Eliminar un visitante
-
 
 💵 pagos
 GET /api/pagos → Obtener todos los pagos
