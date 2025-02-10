@@ -1,0 +1,95 @@
+# 🏗️ Backend API - Express MVC
+
+Este es un backend desarrollado en **Node.js** con **Express.js**, siguiendo la arquitectura **Modelo-Vista-Controlador (MVC)**. La API permite manejar usuarios,apartamentos,pagos,visitas e informes, autenticación con JWT y más.
+
+## 🚀 Tecnologías Usadas
+
+- **Node.js** + **Express.js** (Framework)
+- **Sequelize** (ORM para MySQL/PostgreSQL)
+- **JWT** (Autenticación)
+- **bcrypt.js** (Encriptación de contraseñas)
+- **dotenv** (Manejo de variables de entorno)
+- **cors** (Manejo de CORS)
+- **cookie-parser** (Manejo de cookies)
+
+---
+
+## ✅ Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado:
+
+- **[Node.js](https://nodejs.org/)**
+- **[MySQL](https://www.mysql.com/)**
+- **npm**
+
+---
+
+## 📦 Instalación
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/usuario/proyecto-backend.git
+   cd proyecto-backend
+
+   ```
+
+2. instala las dependencias:
+   npm install
+3. crea la base de datos
+   npx sequelize-cli db:create
+4. realiza las migraciones
+   npx sequelize-cli db:create
+
+📂 proyecto-backend
+│
+├── 📂 config # Configuración de la BD y dotenv
+├── 📂 controllers # Lógica de los controladores
+├── 📂 migrations # migraciones a la bdd
+├── 📂 models # Modelos de la base de datos con Sequelize
+├── 📂 routes # Definición de rutas
+├── 📂 middlewares # Autenticación y validaciones
+├── app.js # Configuración de Express
+├── package.json # Dependencias y scripts
+├── pruebas.txt # para probar los endpoints
+├── README.md # Documentación del proyecto
+
+## 📦 Ejecutar el proyecto
+
+npm run dev
+
+📌 Endpoints Principales
+🔐 Autenticación
+POST /api/inicio → Iniciar sesión
+POST /api/registro → Registro de usuarios
+
+👤 Usuarios
+GET /api/usuarios → Obtener todos los usuarios
+DELETE /api/usuarios/:id → Eliminar un usuario
+
+🏠 Apartamentos
+GET /api/apartamentos → Obtener todos los apartamentos
+GET /api/apartamentos/:id → Obtener un apartamento por ID
+PUT /api/apartamentos/:id → Actualizar un apartamento
+DELETE /api/apartamentos/:id → Eliminar un apartamento
+
+
+🧔 Visitantes
+GET /api/visitantes → Obtener todos los visitantes
+GET /api/visitantes/:id → Obtener un visitante por ID
+PUT /api/visitantes/:id → Actualizar un visitante
+DELETE /api/visitantes/:id → Eliminar un visitante
+
+
+💵 pagos
+GET /api/pagos → Obtener todos los pagos
+GET /api/pagos/:id → Obtener un pago por ID
+PUT /api/pagos/:id → Actualizar un pago
+DELETE /api/pagos/:id → Eliminar un pago
+
+
+👤 informes
+GET /api/informes → Obtener todos los informes
+GET /api/informes/:id → Obtener un informe por ID
+PUT /api/informes/:id → Actualizar un informe
+DELETE /api/informes/:id → Eliminar un informe

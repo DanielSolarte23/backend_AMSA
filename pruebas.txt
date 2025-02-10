@@ -1,0 +1,44 @@
+  USUARIOS
+
+  {
+  "nombre": "user1",
+  "apellido": "1",
+  "documento":"123",
+  "correo":"usuario@ejemplo.com",
+  "contraseña":"user123",
+  "rol":"administrador"
+  }
+
+  APARTAMENTOS
+
+  {
+    "nroApto": "101",
+    "torre": "A",
+    "estado":"desocupado",
+    "propietarioId":1
+  }
+
+  INFORMES
+  
+  {
+  "asunto": "queja",
+  "descripcion": "Esta es una queja de prueba",
+  "usuarioId": 1
+  }
+
+  PAGOS
+
+  {
+  "cantidad": 50.000,
+  "propietarioId": 1
+  }
+
+  VISITANTES
+
+  {
+  "nombre": "visitante1",
+  "apellido": "1",
+  "documento":"123456",
+  "telefono":"123",
+  "apartamentoId":1
+}
