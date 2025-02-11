@@ -80,21 +80,19 @@ const inicio = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: usuario.id, rol: usuario.rol },
-      JWT_SECRET,
+      { id: usuario.id, nombre: usuario.nombre, correo: usuario.correo, documento: usuario.documento, rol: usuario.rol },
+      JWT_SECRET, 
       { expiresIn: "2h" }
     );
     
     res.cookie("token", token, cookieOptions);
     res.json({
-      message: "Inicio exitoso",
-      user: {
         id: usuario.id,
         nombre: usuario.nombre,
         apellido: usuario.apellido,
+        documento: usuario.documento,
         correo: usuario.correo,
         rol: usuario.rol,
-      },
     });
   } catch (error) {
     console.error("Error en inico:", error);
