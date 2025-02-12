@@ -28,9 +28,8 @@ module.exports = {
         unique: true
       },
       contraseña: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        type: Sequelize.STRING,  // ❌ Quitar unique: true aquí
+        allowNull: false
       },
       rol: {
         type: Sequelize.ENUM('administrador', 'vigilante', 'propietario'),

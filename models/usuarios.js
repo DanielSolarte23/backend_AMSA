@@ -34,11 +34,14 @@ module.exports = (sequelize, DataTypes) => {
         usuario.contraseña = await bcrypt.hash(usuario.contraseña, salt);
     });
 
-      Usuarios.associate = (models) => {
+    Usuarios.associate = (models) => {
         Usuarios.hasMany(models.Informes, {
-          foreignKey: 'usuarioId'
+            foreignKey: 'usuarioId',
+            onDelete: 'SET NULL',  
+            onUpdate: 'CASCADE' 
         });
-      };
+    };
+
 
     return Usuarios;
 };

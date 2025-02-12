@@ -12,9 +12,12 @@ module.exports = (sequelize, DataTypes) => {
   
     Informes.associate = (models) => {
       Informes.belongsTo(models.Usuarios, {
-        foreignKey: 'usuarioId'
+          foreignKey: 'usuarioId',
+          onDelete: 'SET NULL',
+          onUpdate: 'CASCADE'
       });
-    };
+  };
+  
   
     return Informes;
   };

@@ -11,6 +11,22 @@ const getUsuarios = async (req, res) => {
   }
 };
 
+const getPropietarios = async (req, res) => {
+  try {
+      const propietarios = await Usuarios.findAll({
+          where: { rol: "propietario" }
+      });
+
+      if (propietarios.length === 0) {
+          return res.status(404).json({ message: "No se encontraron propietarios" });
+      }
+
+      res.json(propietarios);
+  } catch (error) {
+      console.error("Error al obtener propietarios:", error);
+      res.status(500).json({ message: "Error interno del servidor" });
+  }
+};
 
 // Eliminar un usuario
 const deleteUsuarios = async (req, res) => {
@@ -30,4 +46,5 @@ const deleteUsuarios = async (req, res) => {
 module.exports = {
   getUsuarios,
   deleteUsuarios,
+  getPropietarios,
 };
