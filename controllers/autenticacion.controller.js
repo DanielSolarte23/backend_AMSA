@@ -33,7 +33,7 @@ const registro = async (req, res) => {
       apellido,
       documento,
       correo,
-      contraseña, 
+      contraseña,
       rol,
     });
 
@@ -42,16 +42,7 @@ const registro = async (req, res) => {
     });
 
     res.cookie("token", token, cookieOptions);
-    res.status(201).json({
-      message: "Usuario registrado exitosamente",
-      user: {
-        id: usuario.id,
-        nombre: usuario.nombre,
-        apellido: usuario.apellido,
-        correo: usuario.correo,
-        rol: usuario.rol,
-      },
-    });
+    res.status(201).json(usuario);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -61,38 +52,38 @@ const registro = async (req, res) => {
 const inicio = async (req, res) => {
   try {
     const { correo, contraseña } = req.body;
-  
-    const usuario = await Usuarios.findOne({ 
+
+    const usuario = await Usuarios.findOne({
       where: { correo },
-      attributes: ['id', 'contraseña', 'nombre', 'apellido', 'correo', 'rol'] 
+      attributes: ['id', 'contraseña', 'nombre', 'apellido', 'correo', 'documento', 'rol']
     });
-    
+
     console.log("Usuario encontrado:", usuario);
-    
+
     if (!usuario) {
       return res.status(401).json({ message: "Credenciales inválidas" });
     }
 
     const contraseñaValida = await bcrypt.compare(contraseña, usuario.contraseña);
-    
+
     if (!contraseñaValida) {
       return res.status(401).json({ message: "Credenciales inválidas" });
     }
 
     const token = jwt.sign(
       { id: usuario.id, nombre: usuario.nombre, correo: usuario.correo, documento: usuario.documento, rol: usuario.rol },
-      JWT_SECRET, 
+      JWT_SECRET,
       { expiresIn: "2h" }
     );
-    
+
     res.cookie("token", token, cookieOptions);
     res.json({
-        id: usuario.id,
-        nombre: usuario.nombre,
-        apellido: usuario.apellido,
-        documento: usuario.documento,
-        correo: usuario.correo,
-        rol: usuario.rol,
+      id: usuario.id,
+      nombre: usuario.nombre,
+      apellido: usuario.apellido,
+      documento: usuario.documento,
+      correo: usuario.correo,
+      rol: usuario.rol,
     });
   } catch (error) {
     console.error("Error en inico:", error);
@@ -117,6 +108,7 @@ const verificarToken = async (req, res) => {
       nombre: req.usuario.nombre,
       contraseña: req.usuario.contraseña,
       correo: req.usuario.correo,
+      documento: req.usuario.documento,
       rol: req.usuario.rol,
     };
 
